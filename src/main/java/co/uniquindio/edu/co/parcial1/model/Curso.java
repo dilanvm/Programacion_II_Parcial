@@ -9,4 +9,7 @@ public class Curso {
     private double valorMensual;
     private EstadoCurso estadoCurso;
 
+    public String getCodigo() {
+        return codigo;
+    }
 }
