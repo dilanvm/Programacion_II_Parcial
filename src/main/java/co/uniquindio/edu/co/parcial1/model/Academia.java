@@ -2,7 +2,6 @@ package co.uniquindio.edu.co.parcial1.model;
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class Academia {
     public static Academia instancia;
     private String nombreComercial;
