@@ -8,7 +8,7 @@ public class Academia {
     private List<Estudiante> estudiantes;
     private List<Profesor> profesores;
     private List<Curso> cursos;
-    private List<ServicioAdicional> servicioAdicionales;
+    private List<ServicioAdicional> servicioAdicional;
     private List<Matricula> matriculas;
 
     private Academia(){}
@@ -17,26 +17,5 @@ public class Academia {
             instancia=new Academia();
         }
         return instancia;
-    }public void agregarEstudiante(Estudiante estudiante){
-        estudiantes.add(estudiante);
     }
-    public void agregarProfesor(Profesor profesor){
-        profesores.add(profesor);
-    }
-    public void agregarCurso(Curso curso){
-        cursos.add(curso);
-    }
-    public void agregarServicioAdicional(ServicioAdicional servicioAdicional){
-        serviciosAdicionales.add(servicioAdicional);
-    }
-    public void agregarMatricula(Matricula matricula){
-        matriculas.add(matricula);
-    }
-    public Estudiante buscarEstudiante(int numeroIdentidad){
-        for(Estudiante estudiante:estudiantes){
-            if(estudiante.getNumeroIdentidad()==numeroIdentidad){
-                return estudiante;
-            }
-        }
-        return null;
 }
