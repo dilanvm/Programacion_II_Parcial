@@ -1,5 +1,6 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +92,4 @@ public class Estudiante {
                 "Fecha registro :" + fechaRegistro + '\'' +
                 "Matriculas :" + matriculas ;
     }
-
-
 }
