@@ -4,14 +4,17 @@ public class ServicioAdicional {
     // código, nombre, descripción, precio y disponibilidad.
     private String codigo;
     private String nombreServicio;
+    private String descripcion;
     private double precio;
     private boolean disponibilidad;
 
         public ServicioAdicional(String codigo, String nombreServicio, double precio, boolean disponibilidad) {
             this.codigo = codigo;
             this.nombreServicio = nombreServicio;
+            this.descripcion=descripcion;
             this.precio = precio;
             this.disponibilidad = disponibilidad;
+
         }
 
         public String getCodigo() {
@@ -38,7 +41,15 @@ public class ServicioAdicional {
             this.precio = precio;
         }
 
-        public boolean isDisponibilidad() {
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public boolean isDisponibilidad() {
             return disponibilidad;
         }
 

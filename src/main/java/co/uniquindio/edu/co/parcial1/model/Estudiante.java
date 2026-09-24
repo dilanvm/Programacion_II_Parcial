@@ -14,7 +14,7 @@ public class Estudiante {
 
     private List<Matricula> matriculas;
 
-        public void Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, String fechaRegistro, Matricula matriculas){
+        public Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, String fechaRegistro, Matricula matriculas){
             this.nombreCompleto = nombreCompleto;
             this.numeroIdentidad = numeroIdentidad;
             this.telefono = telefono;
@@ -22,6 +22,9 @@ public class Estudiante {
             this.edad = edad;
             this.fechaRegistro = fechaRegistro;
             this.matriculas = new ArrayList<>();
+        }
+        public void agregarMatriculas(Matricula matricula){
+            matriculas.add(matricula);
         }
 
         public String getNombreCompleto (){
