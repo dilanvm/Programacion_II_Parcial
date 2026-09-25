@@ -2,14 +2,14 @@ package co.uniquindio.edu.co.parcial1.model;
 
 public class Profesor {
     private String nombre;
-    private int identifiacion;
+    private int identificacion;
     private String idioma;
-    private int telefono;
+    private String telefono;
     private double tarifaSesion;
 
-    public Profesor(String nombre, int identifiacion, String idioma, int telefono, double tarifaSesion) {
+    public Profesor(String nombre, int identificacion, String idioma, String telefono, double tarifaSesion) {
         this.nombre = nombre;
-        this.identifiacion = identifiacion;
+        this.identificacion = identificacion;
         this.idioma = idioma;
         this.telefono = telefono;
         this.tarifaSesion = tarifaSesion;
@@ -24,11 +24,11 @@ public class Profesor {
     }
 
     public int getIdentifiacion() {
-        return identifiacion;
+        return identificacion;
     }
 
     public void setIdentifiacion(int identifiacion) {
-        this.identifiacion = identifiacion;
+        this.identificacion = identifiacion;
     }
 
     public String getIdioma() {
@@ -59,7 +59,7 @@ public class Profesor {
     public String toString() {
         return "Datos del profesor :" +
                 "Nombre :" + nombre + '\'' +
-                "Identifiacion :" + identifiacion +
+                "Identifiacion :" + identificacion +
                 "Idioma :" + idioma + '\'' +
                 "Telefono :" + telefono +
                 "Tarifa sesion :" + tarifaSesion;
