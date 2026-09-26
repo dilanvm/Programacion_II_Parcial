@@ -1,5 +1,7 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+import java.util.List;
+
 public class CursoRegular extends Curso{
     private boolean accesoPlataforma;
     private boolean materialDidactico;
@@ -35,8 +37,20 @@ public class CursoRegular extends Curso{
     }
 
     @Override
-    public double calcularValorMatricula() {
-        return 0;
+    public double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException {
+        double totalMensualServicios= 0;
+        if(servicioAdicionalList!=null){
+            for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
+                totalMensualServicios+=servicioAdicional1.getPrecio();
+            }
+        }
+        double total= (valorMensual+totalMensualServicios)*duracionEnMeses;
+        if(descuento<0||descuento>100){
+            throw new IllegalAccessException("El descuento debe estar entre 0 y 100");
+        }
+        return total*(1-descuento/100.0);
+
+    }
     }
 
 

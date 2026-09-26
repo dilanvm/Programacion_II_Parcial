@@ -1,10 +1,15 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Curso {
     protected String codigo, nombre, idioma, descripcion;
     protected int duracionEnMeses;
     protected double valorMensual;
     protected EstadoCurso estadoCurso;
+    protected List<ServicioAdicional> servicioAdicional;
+    protected double descuento;
 
     public Curso(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso) {
         this.codigo = codigo;
@@ -14,6 +19,8 @@ public abstract class Curso {
         this.duracionEnMeses = duracionEnMeses;
         this.valorMensual = valorMensual;
         this.estadoCurso = estadoCurso;
+        this.descuento = descuento;
+        this.servicioAdicional = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -72,6 +79,14 @@ public abstract class Curso {
         this.estadoCurso = estadoCurso;
     }
 
+    public List<ServicioAdicional> getServicioAdicional() {
+        return servicioAdicional;
+    }
+
+    public void setServicioAdicional(List<ServicioAdicional> servicioAdicional) {
+        this.servicioAdicional = servicioAdicional;
+    }
+
     @Override
     public String toString() {
         return "Curso :" +
@@ -84,5 +99,5 @@ public abstract class Curso {
                 "Estado curso :" + estadoCurso;
     }
 
-    public abstract double calcularValorMatricula();
+    public abstract double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException;
 }

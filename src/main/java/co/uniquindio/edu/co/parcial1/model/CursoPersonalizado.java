@@ -1,25 +1,47 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+import java.util.List;
+
 public class CursoPersonalizado extends Curso{
     private final int sesionesConProfesor;
     private final NivelReferencia nivelReferencia;
     private final String objetivo;
     private final boolean accesoPlataforma;
+    private final List<ServicioAdicional>servicioAdicionalList;
 
-    private CursoPersonalizado(Builder builder){
+    private CursoPersonalizado(Builder builder, List<ServicioAdicional> servicioAdicionalList){
         super(builder.codigo, builder.nombre, builder.idioma, builder.descripcion,
                 builder.duracionMeses, builder.valorMensual, builder.estadoCurso);
         this.sesionesConProfesor = builder.sesionesConProfesor;
         this.nivelReferencia = builder.nivelReferencia;
         this.objetivo = builder.objetivo;
         this.accesoPlataforma = builder.accesoPlataforma;
+        this.servicioAdicionalList = servicioAdicionalList;
+    }
 
+    @Override
+    public double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException {
+        double totalMensualServicios= 0;
+        if(servicioAdicionalList!=null){
+            for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
+                totalMensualServicios+=servicioAdicional1.getPrecio();
+            }
+        }
+        double total= (valorMensual+totalMensualServicios)*duracionEnMeses;
+        if(descuento<0||descuento>100){
+            throw new IllegalAccessException("El descuento debe estar entre 0 y 100");
+        }
+        return total*(1-descuento/100.0);
+
+    }
     }
 
 
-
     public static class Builder {
-        private String codigo, nombre, idioma, descripcion;
+        String codigo;
+        private String nombre;
+        private String idioma;
+        private String descripcion;
         private int duracionMeses;
         private double valorMensual;
         private EstadoCurso estadoCurso;
@@ -27,6 +49,7 @@ public class CursoPersonalizado extends Curso{
         private NivelReferencia nivelReferencia;
         private String objetivo;
         private boolean accesoPlataforma;
+        private double descuento;
 
 
         public Builder codigo(String codigo) {
@@ -84,13 +107,12 @@ public class CursoPersonalizado extends Curso{
             this.accesoPlataforma = accesoPlataforma;
             return this;
         }
-
+        public Builder descuento(double descuento){
+            this.descuento=descuento;
+            return this;
+}
 
         }
-    @Override
-    public double calcularValorMatricula() {
-        return 0;
-    }
 
     }
 
