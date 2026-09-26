@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.parcial1.viewController.MatriculaViewController">
+   <children>
+      <ComboBox id="#cbEstudiante" layoutX="109.0" layoutY="14.0" prefHeight="26.0" prefWidth="99.0" promptText="Estudiante" />
+      <ComboBox id="#cbCurso" layoutX="109.0" layoutY="51.0" prefHeight="26.0" prefWidth="76.0" promptText="Curso" />
+      <DatePicker layoutX="370.0" layoutY="51.0" prefHeight="26.0" prefWidth="119.0" />
+      <ComboBox id="#cbProfesor" layoutX="370.0" layoutY="14.0" prefHeight="26.0" prefWidth="108.0" promptText="Profesor" />
+      <Label id="#chServiciosAdicionales" layoutX="402.0" layoutY="94.0" prefHeight="26.0" prefWidth="119.0" text="Servicios Adicionales" />
+      <Button id="#btRegistrar" layoutX="268.0" layoutY="327.0" mnemonicParsing="false" text="Registrar Matricula" />
+      <TextField layoutX="402.0" layoutY="128.0" prefHeight="26.0" prefWidth="108.0" />
+      <TextField layoutX="520.0" layoutY="128.0" prefHeight="26.0" prefWidth="76.0" />
+      <GridPane layoutX="-1.0" layoutY="244.0" prefHeight="26.0" prefWidth="585.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="293.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="293.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="35.4" minHeight="3.6000000000000014" prefHeight="9.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="29.4" minHeight="0.0" prefHeight="17.4" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="12.399999999999999" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <BorderPane prefHeight="400.0" prefWidth="586.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="63.0" text="Estudiante" />
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

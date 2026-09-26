@@ -8,7 +8,7 @@ public class CursoRegular extends Curso{
 
 
     public CursoRegular(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso, boolean accesoPlataforma, boolean materialDidactico) {
-        super(codigo, nombre, idioma, descripcion, duracionEnMeses, valorMensual, estadoCurso);
+        super(codigo, nombre, idioma, descripcion, duracionEnMeses, valorMensual, estadoCurso, descuento);
         this.accesoPlataforma = accesoPlataforma;
         this.materialDidactico = materialDidactico;
     }
@@ -37,21 +37,19 @@ public class CursoRegular extends Curso{
     }
 
     @Override
-    public double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException {
-        double totalMensualServicios= 0;
+    public double calcularValorMatricula() {
+        if(descuento<0.0||descuento>100.0){
+            throw new IllegalArgumentException("El descuento debe estar entre 0 y 100");
+        }
+        double totalMensualServicios=0.0;
+        List<ServicioAdicional>servicioAdicionalList=getServicioAdicional();
         if(servicioAdicionalList!=null){
             for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
                 totalMensualServicios+=servicioAdicional1.getPrecio();
             }
         }
         double total= (valorMensual+totalMensualServicios)*duracionEnMeses;
-        if(descuento<0||descuento>100){
-            throw new IllegalAccessException("El descuento debe estar entre 0 y 100");
-        }
         return total*(1-descuento/100.0);
-
     }
-    }
-
 
 }

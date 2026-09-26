@@ -23,12 +23,12 @@ public class Profesor {
         this.nombre = nombre;
     }
 
-    public int getIdentifiacion() {
+    public int getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentifiacion(int identifiacion) {
-        this.identificacion = identifiacion;
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
     public String getIdioma() {
@@ -39,11 +39,11 @@ public class Profesor {
         this.idioma = idioma;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

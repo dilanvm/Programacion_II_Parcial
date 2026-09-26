@@ -3,7 +3,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Academia {
+
     public static Academia instancia;
+
     private String nombreComercial;
     private String nit;
     private String direccion;
@@ -11,11 +13,11 @@ public class Academia {
     private String correo;
     private String paginaWeb;
 
-    private List<Estudiante> estudiantes;
-    private List<Profesor> profesores;
-    private List<Curso> cursos;
-    private List<ServicioAdicional> serviciosAdicionales;
-    private List<Matricula> matriculas;
+    private final List<Estudiante> estudiantes;
+    private final List<Profesor> profesores;
+    private final List<Curso> cursos;
+    private final List<ServicioAdicional> serviciosAdicionales;
+    private final List<Matricula> matriculas;
 
     private Academia() {
         estudiantes = new ArrayList<>();
@@ -50,6 +52,15 @@ public class Academia {
         for(Estudiante estudiante:estudiantes){
             if(estudiante.getNumeroIdentidad()==numeroIdentidad){
                 return estudiante;
+            }
+        }
+        return null;
+
+    }
+    public Profesor buscarProfesor(int identificacion){
+        for(Profesor profesor:profesores){
+            if(profesor.getIdentificacion()==identificacion){
+                return profesor;
             }
         }
         return null;

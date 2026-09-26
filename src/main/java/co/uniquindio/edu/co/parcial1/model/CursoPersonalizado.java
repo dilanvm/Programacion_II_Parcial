@@ -2,43 +2,41 @@ package co.uniquindio.edu.co.parcial1.model;
 
 import java.util.List;
 
-public class CursoPersonalizado extends Curso{
+public class CursoPersonalizado extends Curso {
     private final int sesionesConProfesor;
     private final NivelReferencia nivelReferencia;
     private final String objetivo;
     private final boolean accesoPlataforma;
-    private final List<ServicioAdicional>servicioAdicionalList;
+    private Profesor profesor;
 
-    private CursoPersonalizado(Builder builder, List<ServicioAdicional> servicioAdicionalList){
+    private CursoPersonalizado(Builder builder) {
         super(builder.codigo, builder.nombre, builder.idioma, builder.descripcion,
-                builder.duracionMeses, builder.valorMensual, builder.estadoCurso);
+                builder.duracionMeses, builder.valorMensual, builder.estadoCurso, builder.descuento);
         this.sesionesConProfesor = builder.sesionesConProfesor;
         this.nivelReferencia = builder.nivelReferencia;
         this.objetivo = builder.objetivo;
         this.accesoPlataforma = builder.accesoPlataforma;
-        this.servicioAdicionalList = servicioAdicionalList;
     }
 
     @Override
-    public double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException {
-        double totalMensualServicios= 0;
+    public double calcularValorMatricula() {
+        double costoSesiones=sesionesConProfesor*profesor.getTarifaSesion();
+        if(descuento<0||descuento>100){
+            throw new IllegalArgumentException("El descuento debe estar entre 0 y 100");
+        }
+        double totalMensualServicios=0;
+        List<ServicioAdicional>servicioAdicionalList=getServicioAdicional();
         if(servicioAdicionalList!=null){
             for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
                 totalMensualServicios+=servicioAdicional1.getPrecio();
             }
         }
-        double total= (valorMensual+totalMensualServicios)*duracionEnMeses;
-        if(descuento<0||descuento>100){
-            throw new IllegalAccessException("El descuento debe estar entre 0 y 100");
-        }
+        double total= (valorMensual+totalMensualServicios*duracionEnMeses+costoSesiones);
         return total*(1-descuento/100.0);
-
     }
-    }
-
 
     public static class Builder {
-        String codigo;
+        private String codigo;
         private String nombre;
         private String idioma;
         private String descripcion;
@@ -91,7 +89,10 @@ public class CursoPersonalizado extends Curso{
             this.estadoCurso = estadoCurso;
             return this;
         }
-
+        public Builder sesionesConProfesor(int sesionesConProfesor) {
+            this.sesionesConProfesor = sesionesConProfesor;
+            return this;
+        }
 
         public Builder nivelReferencia(NivelReferencia nivelReferencia) {
             this.nivelReferencia = nivelReferencia;
@@ -107,12 +108,15 @@ public class CursoPersonalizado extends Curso{
             this.accesoPlataforma = accesoPlataforma;
             return this;
         }
-        public Builder descuento(double descuento){
-            this.descuento=descuento;
+
+        public Builder descuento(double descuento) {
+            this.descuento = descuento;
             return this;
+        }
+        public CursoPersonalizado build() {
+            return new CursoPersonalizado(this);
+        }
+    }
 }
 
-        }
-
-    }
 

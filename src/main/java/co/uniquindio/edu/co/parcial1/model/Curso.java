@@ -11,7 +11,7 @@ public abstract class Curso {
     protected List<ServicioAdicional> servicioAdicional;
     protected double descuento;
 
-    public Curso(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso) {
+    public Curso(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso, double descuento) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idioma = idioma;
@@ -99,5 +99,5 @@ public abstract class Curso {
                 "Estado curso :" + estadoCurso;
     }
 
-    public abstract double calcularValorMatricula(double valorMensual, int duracionEnMeses, double descuento, List<ServicioAdicional> servicioAdicionalList) throws IllegalAccessException;
+    public abstract double calcularValorMatricula();
 }

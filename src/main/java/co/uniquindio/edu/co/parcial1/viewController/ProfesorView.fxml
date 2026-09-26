@@ -16,11 +16,17 @@
       <Label layoutX="88.0" layoutY="185.0" text="Idioma:" />
       <Label layoutX="88.0" layoutY="221.0" text="Teléfono:" />
       <Label layoutX="88.0" layoutY="255.0" text="Tarifa por Sesión:" />
-      <Button layoutX="274.0" layoutY="305.0" mnemonicParsing="false" text="Siguiente" />
-      <TextField layoutX="264.0" layoutY="102.0" prefHeight="26.0" prefWidth="257.0" />
-      <TextField layoutX="264.0" layoutY="140.0" prefHeight="26.0" prefWidth="258.0" />
-      <TextField layoutX="264.0" layoutY="180.0" prefHeight="26.0" prefWidth="258.0" />
-      <TextField layoutX="264.0" layoutY="217.0" prefHeight="26.0" prefWidth="258.0" />
-      <TextField layoutX="264.0" layoutY="250.0" prefHeight="26.0" prefWidth="258.0" />
+      <TextField fx:id="txtNombre" layoutX="264.0" layoutY="102.0" prefHeight="26.0" prefWidth="257.0" />
+
+      <TextField fx:id="txtIdentificacion" layoutX="264.0" layoutY="140.0" prefHeight="26.0" prefWidth="258.0" />
+
+      <TextField fx:id="txtIdioma" layoutX="264.0" layoutY="180.0" prefHeight="26.0" prefWidth="258.0" />
+
+      <TextField fx:id="txtTelefono" layoutX="264.0" layoutY="217.0" prefHeight="26.0" prefWidth="258.0" />
+
+      <TextField fx:id="txtTarifaSesion" layoutX="264.0" layoutY="250.0" prefHeight="26.0" prefWidth="258.0" />
+
+      <Button layoutX="268.0" layoutY="306.0" mnemonicParsing="false" onAction="#registrarProfesor" text="Registrar" />
+      <Button layoutX="390.0" layoutY="305.0" mnemonicParsing="false" text="Buscar" onAction="#buscarProfesor" />
    </children>
 </AnchorPane>

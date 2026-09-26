@@ -1,6 +1,7 @@
 package co.uniquindio.edu.co.parcial1.model;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +11,11 @@ public class Estudiante {
     private int telefono;
     private String correoElectronico;
     private int edad;
-    private String fechaRegistro;
+    private LocalDate fechaRegistro;
 
     private List<Matricula> matriculas;
 
-        public Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, String fechaRegistro, Matricula matriculas){
+        public Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, LocalDate fechaRegistro){
             this.nombreCompleto = nombreCompleto;
             this.numeroIdentidad = numeroIdentidad;
             this.telefono = telefono;
@@ -67,11 +68,11 @@ public class Estudiante {
             this.edad = edad;
         }
 
-        public String getFechaRegistro() {
+        public LocalDate getFechaRegistro() {
             return fechaRegistro;
         }
 
-        public void setFechaRegistro(String fechaRegistro) {
+        public void setFechaRegistro(LocalDate fechaRegistro) {
             this.fechaRegistro = fechaRegistro;
         }
 
