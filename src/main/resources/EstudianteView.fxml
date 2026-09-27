@@ -3,26 +3,39 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.parcial1.viewController.EstudianteViewController">
    <children>
       <Button layoutX="233.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="142.0" text="SIGUIENTE" />
-      <Label layoutX="238.0" layoutY="33.0" prefHeight="26.0" prefWidth="112.0" text="Registrar estudiante">
+      <Label layoutX="238.0" layoutY="33.0" prefHeight="26.0" prefWidth="142.0" text="Registrar estudiante">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
       </Label>
       <Label layoutX="83.0" layoutY="93.0" prefHeight="18.0" prefWidth="112.0" text="Nombre Completo:" />
-      <TextField layoutX="234.0" layoutY="88.0" prefHeight="26.0" prefWidth="302.0" />
       <Label layoutX="83.0" layoutY="135.0" prefHeight="18.0" prefWidth="106.0" text="Identificación:" />
-      <TextField layoutX="234.0" layoutY="127.0" prefHeight="26.0" prefWidth="302.0" />
       <Label layoutX="83.0" layoutY="167.0" prefHeight="26.0" prefWidth="112.0" text="Teléfono:" />
-      <TextField layoutX="234.0" layoutY="166.0" prefHeight="26.0" prefWidth="302.0" />
       <Label layoutX="83.0" layoutY="209.0" prefHeight="26.0" prefWidth="142.0" text="Correo electrónico:" />
-      <TextField layoutX="234.0" layoutY="205.0" prefHeight="26.0" prefWidth="302.0" />
       <Label layoutX="83.0" layoutY="251.0" prefHeight="18.0" prefWidth="142.0" text="Edad:" />
-      <TextField layoutX="234.0" layoutY="244.0" prefHeight="26.0" prefWidth="302.0" />
       <Label layoutX="83.0" layoutY="293.0" prefHeight="18.0" prefWidth="151.0" text="Fecha de Registro:" />
-      <TextField layoutX="234.0" layoutY="283.0" prefHeight="26.0" prefWidth="302.0" />
+      <Button layoutX="233.0" layoutY="331.0" onAction="#registrarEstudiante" prefHeight="23.0" prefWidth="142.0" text="REGISTRAR" />
+
+      <Button layoutX="390.0" layoutY="331.0" onAction="#buscarEstudiante" prefHeight="23.0" prefWidth="142.0" text="BUSCAR" />
+
+      <TextField fx:id="txtNombre" layoutX="234.0" layoutY="88.0" prefHeight="26.0" prefWidth="302.0" />
+
+      <TextField fx:id="txtDocumento" layoutX="234.0" layoutY="127.0" prefHeight="26.0" prefWidth="302.0" />
+
+      <TextField fx:id="txtTelefono" layoutX="234.0" layoutY="166.0" prefHeight="26.0" prefWidth="302.0" />
+
+      <TextField fx:id="txtCorreo" layoutX="234.0" layoutY="205.0" prefHeight="26.0" prefWidth="302.0" />
+
+      <TextField fx:id="txtEdad" layoutX="234.0" layoutY="244.0" prefHeight="26.0" prefWidth="302.0" />
+
+      <DatePicker fx:id="dpFechaRegistro" layoutX="234.0" layoutY="283.0" prefHeight="26.0" prefWidth="302.0" />
    </children>
 </AnchorPane>
