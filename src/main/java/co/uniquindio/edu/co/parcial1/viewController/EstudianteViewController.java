@@ -25,7 +25,7 @@ public class EstudianteViewController {
                     Integer.parseInt(txtTelefono.getText().trim()),
                     txtCorreo.getText().trim(),
                     Integer.parseInt(txtEdad.getText().trim()),
-                    dpFechaRegistro.getValue());
+                dpFechaRegistro.getValue());
 
             mostrarMensaje("Estudiante registrado correctamente.");
             limpiarCampos();

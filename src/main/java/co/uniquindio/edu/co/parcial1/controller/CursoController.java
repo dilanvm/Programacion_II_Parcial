@@ -48,7 +48,7 @@ public class CursoController {
             case "Regular":
                 curso = new CursoRegular(
                         codigo, nombre, idioma, descripcion,
-                        duracion, valorMensual, estado,
+                        duracion, valorMensual, estado,descuento,
                         accesoPlataforma, materialDidactico);
                 curso.setDescuento(descuento);
                 break;
@@ -57,7 +57,7 @@ public class CursoController {
                 curso = new CursoIntensivo(
                         codigo, nombre, idioma, descripcion,
                         duracion, valorMensual, estado,
-                        clubConversacion);
+                        clubConversacion, descuento);
                 curso.setDescuento(descuento);
                 break;
 

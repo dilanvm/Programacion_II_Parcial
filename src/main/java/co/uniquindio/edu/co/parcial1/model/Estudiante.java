@@ -8,14 +8,14 @@ import java.util.List;
 public class Estudiante {
     private String nombreCompleto;
     private int numeroIdentidad;
-    private String telefono;
+    private int telefono;
     private String correoElectronico;
     private int edad;
-    private String fechaRegistro;
+    private LocalDate fechaRegistro;
 
     private List<Matricula> matriculas;
 
-        public Estudiante (String nombreCompleto, int numeroIdentidad, String telefono, String correoElectronico, int edad, String fechaRegistro){
+        public Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, LocalDate fechaRegistro){
             this.nombreCompleto = nombreCompleto;
             this.numeroIdentidad = numeroIdentidad;
             this.telefono = telefono;
@@ -42,11 +42,11 @@ public class Estudiante {
             this.numeroIdentidad = numeroIdentidad;
         }
 
-        public String getTelefono() {
+        public int getTelefono() {
             return telefono;
         }
 
-        public void setTelefono(String telefono) {
+        public void setTelefono(int telefono) {
             this.telefono = telefono;
         }
 
@@ -66,11 +66,11 @@ public class Estudiante {
             this.edad = edad;
         }
 
-        public String getFechaRegistro() {
+        public LocalDate getFechaRegistro() {
             return fechaRegistro;
         }
 
-        public void setFechaRegistro(String fechaRegistro) {
+        public void setFechaRegistro(LocalDate fechaRegistro) {
             this.fechaRegistro = fechaRegistro;
         }
 

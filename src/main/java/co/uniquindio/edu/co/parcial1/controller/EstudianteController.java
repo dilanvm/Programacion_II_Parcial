@@ -30,4 +30,4 @@ import java.time.LocalDate;
             return academia.buscarEstudiante(documento);
         }
     }
-}
+
