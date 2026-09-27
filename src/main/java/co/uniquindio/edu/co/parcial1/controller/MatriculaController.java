@@ -52,8 +52,7 @@ import java.util.List;
                     .curso(curso)
                     .fecha(fecha)
                     .profesor(profesor)
-                    .servicioAdicional(servicios)
-                    .descuento(descuento)
+                    .servicios(servicios)
                     .build();
 
             academia.agregarMatricula(matricula);
