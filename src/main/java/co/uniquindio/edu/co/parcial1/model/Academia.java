@@ -64,6 +64,24 @@ public class Academia {
             }
         }
         return null;
+    }
+    public List<Estudiante> getEstudiantes() {
+        return new ArrayList<>(estudiantes);
+    }
 
+    public List<Curso> getCursos() {
+        return new ArrayList<>(cursos);
+    }
+
+    public List<Profesor> getProfesores() {
+        return new ArrayList<>(profesores);
+    }
+
+    public List<ServicioAdicional> getServiciosAdicionales() {
+        return new ArrayList<>(serviciosAdicionales);
+    }
+
+    public List<Matricula> getMatriculas() {
+        return new ArrayList<>(matriculas);
     }
 }

@@ -87,6 +87,14 @@ public abstract class Curso {
         this.servicioAdicional = servicioAdicional;
     }
 
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+
     @Override
     public String toString() {
         return "Curso :" +

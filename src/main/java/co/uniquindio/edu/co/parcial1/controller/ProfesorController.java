@@ -33,4 +33,3 @@ public class ProfesorController {
             return academia.buscarProfesor(identificacion);
         }
     }
-}

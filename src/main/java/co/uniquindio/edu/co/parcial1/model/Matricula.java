@@ -1,13 +1,14 @@
 package co.uniquindio.edu.co.parcial1.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Matricula {
     private final Estudiante estudiante;
     private final Curso curso;
     private final LocalDate fecha;
     private final Profesor profesor;
-    private final ServicioAdicional servicioAdicional;
+    private final List<ServicioAdicional> servicioAdicional;
     private final double descuento;
     private Matricula(Builder builder){
         this.estudiante=builder.estudiante;
@@ -22,7 +23,7 @@ public class Matricula {
         private Curso curso;
         private LocalDate fecha;
         private Profesor profesor;
-        private ServicioAdicional servicioAdicional;
+        private List<ServicioAdicional> servicioAdicional;
         private double descuento;
 
         public Builder estudiante(Estudiante estudiante) {
@@ -45,7 +46,7 @@ public class Matricula {
             return this;
         }
 
-        public Builder servicioAdicional(ServicioAdicional servicioAdicional) {
+        public Builder servicioAdicional(List<ServicioAdicional> servicioAdicional) {
             this.servicioAdicional = servicioAdicional;
             return this;
         }
@@ -57,5 +58,6 @@ public class Matricula {
         public Matricula build(){
             return new Matricula(this);
         }
+
     }
 }
