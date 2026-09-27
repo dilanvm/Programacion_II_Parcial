@@ -1,7 +1,7 @@
 package co.uniquindio.edu.co.parcial1.model;
 
 public class CursoRegular extends Curso{
-    private boolean accesoPlataforma;
+    private boolean accesoPlataforma; // estos datos se tendran que cambiar en el main usando sus setters, ya que por defecto seran creados en false
     private boolean materialDidactico;
 
 
@@ -11,7 +11,7 @@ public class CursoRegular extends Curso{
         this.materialDidactico = materialDidactico;
     }
 
-    public boolean isAccesoPlataforma() {
+    public boolean getAccesoPlataforma() {
         return accesoPlataforma;
     }
 
@@ -19,7 +19,7 @@ public class CursoRegular extends Curso{
         this.accesoPlataforma = accesoPlataforma;
     }
 
-    public boolean isMaterialDidactico() {
+    public boolean getMaterialDidactico() {
         return materialDidactico;
     }
 
@@ -29,8 +29,8 @@ public class CursoRegular extends Curso{
 
     @Override
     public String toString() {
-        return "Curso Regular" + super.toString() +
-                "Acceso plataforma :" + accesoPlataforma +
+        return "Curso Regular" +'\n'+ super.toString() +
+                "Acceso plataforma :" + accesoPlataforma + '\n'+
                 "Material didactico :" + materialDidactico;
     }
 

@@ -85,6 +85,15 @@ public class CursoPersonalizado extends Curso{
             return this;
         }
 
+        public Builder sesionesConProfesor(int sesionesConProfesor) {
+            this.sesionesConProfesor = sesionesConProfesor;
+            return this;
+        }
+
+        public CursoPersonalizado build(){
+            return new CursoPersonalizado(this);
+        }
+
 
         }
     @Override
@@ -92,5 +101,13 @@ public class CursoPersonalizado extends Curso{
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "Curso Personalizado" + '\n'+ super.toString() +
+                "Sesiones Con Profesor :" + sesionesConProfesor + '\n'+
+                "Nivel Referencia :" + nivelReferencia +'\n'+
+                "Objetivo :" + objetivo + '\n' +
+                "Acceso Plataforma :" + accesoPlataforma+'\n';
     }
+}
 

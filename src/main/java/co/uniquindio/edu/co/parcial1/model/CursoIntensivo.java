@@ -1,7 +1,7 @@
 package co.uniquindio.edu.co.parcial1.model;
 
 public class CursoIntensivo extends Curso {
-    private boolean clubConversacion;
+    private boolean clubConversacion;// estos datos se tendran que cambiar en el main usando sus setters, ya que por defecto seran creados en false
 
     public CursoIntensivo(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso, boolean clubConversacion) {
         super(codigo, nombre, idioma, descripcion, duracionEnMeses, valorMensual, estadoCurso);
@@ -18,7 +18,7 @@ public class CursoIntensivo extends Curso {
 
     @Override
     public String toString() {
-        return "Curso Intensivo: " + super.toString() +
+        return "Curso Intensivo: " + '\n' + super.toString() +
                 "Club conversacion :" + clubConversacion;
     }
 

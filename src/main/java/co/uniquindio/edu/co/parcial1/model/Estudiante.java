@@ -1,20 +1,21 @@
 package co.uniquindio.edu.co.parcial1.model;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estudiante {
     private String nombreCompleto;
     private int numeroIdentidad;
-    private int telefono;
+    private String telefono;
     private String correoElectronico;
     private int edad;
     private String fechaRegistro;
 
     private List<Matricula> matriculas;
 
-        public Estudiante (String nombreCompleto, int numeroIdentidad, int telefono, String correoElectronico, int edad, String fechaRegistro, Matricula matriculas){
+        public Estudiante (String nombreCompleto, int numeroIdentidad, String telefono, String correoElectronico, int edad, String fechaRegistro){
             this.nombreCompleto = nombreCompleto;
             this.numeroIdentidad = numeroIdentidad;
             this.telefono = telefono;
@@ -23,9 +24,7 @@ public class Estudiante {
             this.fechaRegistro = fechaRegistro;
             this.matriculas = new ArrayList<>();
         }
-        public void agregarMatriculas(Matricula matricula){
-            matriculas.add(matricula);
-        }
+
 
         public String getNombreCompleto (){
             return nombreCompleto;
@@ -43,11 +42,11 @@ public class Estudiante {
             this.numeroIdentidad = numeroIdentidad;
         }
 
-        public int getTelefono() {
+        public String getTelefono() {
             return telefono;
         }
 
-        public void setTelefono(int telefono) {
+        public void setTelefono(String telefono) {
             this.telefono = telefono;
         }
 
@@ -86,13 +85,17 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Datos del estudiante" +
-                "Nombre completo :" + nombreCompleto + '\'' +
-                "Numero identidad :" + numeroIdentidad +
-                "Telefono :" + telefono +
-                "Correo electronico :" + correoElectronico + '\'' +
-                "Edad :" + edad +
-                "Fecha registro :" + fechaRegistro + '\'' +
+        return "Datos del estudiante" + '\n'+
+                "Nombre completo :" + nombreCompleto + '\n' +
+                "Numero identidad :" + numeroIdentidad +'\n'+
+                "Telefono :" + telefono +'\n'+
+                "Correo electronico :" + correoElectronico + '\n' +
+                "Edad :" + edad +'\n'+
+                "Fecha registro :" + fechaRegistro + '\n' +
                 "Matriculas :" + matriculas ;
+    }
+
+    public void agregarMatricula(Matricula matricula) {
+        matriculas.add(matricula);
     }
 }

@@ -75,13 +75,13 @@ public abstract class Curso {
     @Override
     public String toString() {
         return "Curso :" +
-                "Codigo :" + codigo + '\'' +
-                "Nombre :" + nombre + '\'' +
-                "Idioma :" + idioma + '\'' +
-                "Descripcion :" + descripcion + '\'' +
-                "Duracion en meses :" + duracionEnMeses +
-                "Valor mensual :" + valorMensual +
-                "Estado curso :" + estadoCurso;
+                "Codigo :" + codigo + '\n' +
+                "Nombre :" + nombre + '\n' +
+                "Idioma :" + idioma + '\n' +
+                "Descripcion :" + descripcion + '\n' +
+                "Duracion en meses :" + duracionEnMeses +'\n'+
+                "Valor mensual :" + valorMensual +'\n'+
+                "Estado curso :" + estadoCurso+'\n';
     }
 
     public abstract double calcularValorMatricula();
