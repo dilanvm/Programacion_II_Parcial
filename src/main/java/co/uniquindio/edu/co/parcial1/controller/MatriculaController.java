@@ -57,7 +57,7 @@ import java.util.List;
                     .build();
 
             academia.agregarMatricula(matricula);
-            estudiante.agregarMatriculas(matricula);
+            estudiante.agregarMatricula(matricula);
 
             return matricula;
         }
