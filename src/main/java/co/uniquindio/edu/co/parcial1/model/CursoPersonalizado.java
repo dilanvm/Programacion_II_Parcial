@@ -1,6 +1,9 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+import java.util.List;
+
 public class CursoPersonalizado extends Curso{
+    private Profesor profesor;
     private final int sesionesConProfesor;
     private final NivelReferencia nivelReferencia;
     private final String objetivo;
@@ -8,12 +11,28 @@ public class CursoPersonalizado extends Curso{
 
     private CursoPersonalizado(Builder builder){
         super(builder.codigo, builder.nombre, builder.idioma, builder.descripcion,
-                builder.duracionMeses, builder.valorMensual, builder.estadoCurso);
+                builder.duracionMeses, builder.valorMensual, builder.estadoCurso,builder.descuento);
         this.sesionesConProfesor = builder.sesionesConProfesor;
         this.nivelReferencia = builder.nivelReferencia;
         this.objetivo = builder.objetivo;
         this.accesoPlataforma = builder.accesoPlataforma;
 
+    }
+    @Override
+    public double calcularValorMatricula() {
+        double costoSesiones=sesionesConProfesor*profesor.getTarifaSesion();
+        if(descuento<0||descuento>100){
+            throw new IllegalArgumentException("El descuento debe estar entre 0 y 100");
+        }
+        double totalMensualServicios=0;
+        List<ServicioAdicional> servicioAdicionalList=getServicioAdicional();
+        if(servicioAdicionalList!=null){
+            for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
+                totalMensualServicios+=servicioAdicional1.getPrecio();
+            }
+        }
+        double total= (valorMensual+totalMensualServicios*duracionEnMeses+costoSesiones);
+        return total*(1-descuento/100.0);
     }
 
 
@@ -23,6 +42,7 @@ public class CursoPersonalizado extends Curso{
         private int duracionMeses;
         private double valorMensual;
         private EstadoCurso estadoCurso;
+        private double descuento;
         private int sesionesConProfesor;
         private NivelReferencia nivelReferencia;
         private String objetivo;
@@ -69,6 +89,12 @@ public class CursoPersonalizado extends Curso{
             return this;
         }
 
+        public Builder descuento(double descuento) {
+            this.descuento = descuento;
+            return this;
+        }
+
+
 
         public Builder nivelReferencia(NivelReferencia nivelReferencia) {
             this.nivelReferencia = nivelReferencia;
@@ -96,10 +122,6 @@ public class CursoPersonalizado extends Curso{
 
 
         }
-    @Override
-    public double calcularValorMatricula() {
-        return 0;
-    }
 
     @Override
     public String toString() {

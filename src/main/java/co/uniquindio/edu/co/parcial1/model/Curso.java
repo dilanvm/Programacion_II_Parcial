@@ -1,12 +1,17 @@
 package co.uniquindio.edu.co.parcial1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Curso {
     protected String codigo, nombre, idioma, descripcion;
     protected int duracionEnMeses;
     protected double valorMensual;
     protected EstadoCurso estadoCurso;
+    protected List<ServicioAdicional> servicioAdicional;
+    protected double descuento;
 
-    public Curso(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso) {
+    public Curso(String codigo, String nombre, String idioma, String descripcion, int duracionEnMeses, double valorMensual, EstadoCurso estadoCurso, double descuento) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idioma = idioma;
@@ -14,6 +19,8 @@ public abstract class Curso {
         this.duracionEnMeses = duracionEnMeses;
         this.valorMensual = valorMensual;
         this.estadoCurso = estadoCurso;
+        this.descuento = descuento;
+        this.servicioAdicional = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -72,16 +79,32 @@ public abstract class Curso {
         this.estadoCurso = estadoCurso;
     }
 
+    public List<ServicioAdicional> getServicioAdicional() {
+        return servicioAdicional;
+    }
+
+    public void setServicioAdicional(List<ServicioAdicional> servicioAdicional) {
+        this.servicioAdicional = servicioAdicional;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+
     @Override
     public String toString() {
         return "Curso :" +
-                "Codigo :" + codigo + '\n' +
-                "Nombre :" + nombre + '\n' +
-                "Idioma :" + idioma + '\n' +
-                "Descripcion :" + descripcion + '\n' +
-                "Duracion en meses :" + duracionEnMeses +'\n'+
-                "Valor mensual :" + valorMensual +'\n'+
-                "Estado curso :" + estadoCurso+'\n';
+                "Codigo :" + codigo + '\'' +
+                "Nombre :" + nombre + '\'' +
+                "Idioma :" + idioma + '\'' +
+                "Descripcion :" + descripcion + '\'' +
+                "Duracion en meses :" + duracionEnMeses +
+                "Valor mensual :" + valorMensual +
+                "Estado curso :" + estadoCurso;
     }
 
     public abstract double calcularValorMatricula();

@@ -10,7 +10,7 @@ public class Matricula {
     private final LocalDate fecha;
     private final Profesor profesor;
     private final List<ServicioAdicional> servicios;
-    private final double descuento;
+
     private double valorFinal;
 
     private Matricula(Builder builder) {
@@ -19,7 +19,7 @@ public class Matricula {
         this.fecha = builder.fecha;
         this.profesor = builder.profesor;
         this.servicios = builder.servicios;
-        this.descuento = builder.descuento;
+
         this.valorFinal = calcularTotal();
     }
 
@@ -55,9 +55,7 @@ public class Matricula {
         public Builder servicios(List<ServicioAdicional> servicios) {
             this.servicios = servicios; return this;
         }
-        public Builder descuento(double descuento) {
-            this.descuento = descuento; return this;
-        }
+
 
         public Matricula build() {
             return new Matricula(this);
@@ -69,7 +67,7 @@ public class Matricula {
         for (ServicioAdicional s : servicios) {
             total += s.getPrecio();
         }
-        return total - descuento;
+        return total;
     }
 
     @Override
@@ -80,7 +78,6 @@ public class Matricula {
                 "Fecha :" + fecha +'\n' +
                 "Profesor :" + profesor +'\n' +
                 "Servicios :" + servicios +'\n' +
-                "Descuento :" + descuento +'\n' +
                 "Valor Final :" + valorFinal;
     }
 }
