@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0"
+<AnchorPane prefHeight="650.0" prefWidth="900.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="co.uniquindio.edu.co.parcial1.viewController.AcademiaViewController">
     <children>
-        <TabPane prefHeight="500.0" prefWidth="800.0"
-                 tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="650.0" prefWidth="900.0"
+                 tabClosingPolicy="UNAVAILABLE"
+                 AnchorPane.topAnchor="0.0"
+                 AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0">
             <tabs>
                 <Tab fx:id="tabEstudiantes" text="Estudiantes">
                     <content>
@@ -38,6 +43,76 @@
                 <Tab fx:id="tabServicios" text="Servicios adicionales">
                     <content>
                         <fx:include source="ServicioAdicionalView.fxml"/>
+                    </content>
+                </Tab>
+
+                <Tab fx:id="tabReportes" text="Reportes e Ingresos">
+                    <content>
+                        <ScrollPane fitToWidth="true">
+                            <content>
+                                <VBox spacing="15.0">
+                                    <padding>
+                                        <Insets top="20.0" right="25.0" bottom="20.0" left="25.0"/>
+                                    </padding>
+                                    <children>
+                                        <TitledPane text="Información Institucional de la Academia" collapsible="false">
+                                            <content>
+                                                <GridPane hgap="15" vgap="8">
+                                                    <Label text="Nombre Comercial:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                                    <Label fx:id="lblNombreAcademia" text="LenguajeCafetero" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                                                    <Label text="NIT:" style="-fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                                    <Label fx:id="lblNit" text="900.876.543-1" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                                                    <Label text="Dirección:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                                    <Label fx:id="lblDireccion" text="Carrera 15 # 12N-34, Armenia, Quindío" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                                                    <Label text="Teléfono:" style="-fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                                    <Label fx:id="lblTelefono" text="(606) 745-1234" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                                                    <Label text="Correo Electrónico:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                                    <Label fx:id="lblCorreo" text="contacto@lenguajecafetero.edu.co" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                                                    <Label text="Página Web:" style="-fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                                    <Label fx:id="lblWeb" text="www.lenguajecafetero.edu.co" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                                                </GridPane>
+                                            </content>
+                                        </TitledPane>
+
+                                        <TitledPane text="Consulta de Ingresos por Período (Requerimiento del Parcial)" collapsible="false">
+                                            <content>
+                                                <VBox spacing="12">
+                                                    <HBox spacing="15" alignment="CENTER_LEFT">
+                                                        <Label text="Fecha Inicial:" style="-fx-font-weight: bold;"/>
+                                                        <DatePicker fx:id="dpFechaInicio" prefWidth="180"/>
+
+                                                        <Label text="Fecha Final:" style="-fx-font-weight: bold;"/>
+                                                        <DatePicker fx:id="dpFechaFin" prefWidth="180"/>
+
+                                                        <Button text="Calcular Ingresos" onAction="#onCalcularIngresos" defaultButton="true"/>
+                                                    </HBox>
+
+                                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                                        <Label text="Ingresos Totales en el Período:" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+                                                        <Label fx:id="lblTotalIngresos" text="0.00" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1b5e20;"/>
+                                                    </HBox>
+
+                                                    <Label text="Detalle de Matrículas en el Rango Consultado:" style="-fx-font-weight: bold;"/>
+                                                    <TableView fx:id="tablaReporteMatriculas" prefHeight="220">
+                                                        <columns>
+                                                            <TableColumn fx:id="colRepFecha" text="Fecha" prefWidth="110"/>
+                                                            <TableColumn fx:id="colRepEstudiante" text="Estudiante" prefWidth="220"/>
+                                                            <TableColumn fx:id="colRepCurso" text="Curso" prefWidth="220"/>
+                                                            <TableColumn fx:id="colRepValor" text="Valor Matrícula" prefWidth="160"/>
+                                                        </columns>
+                                                    </TableView>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
                     </content>
                 </Tab>
             </tabs>

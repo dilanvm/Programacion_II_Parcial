@@ -57,6 +57,7 @@ public class EstudianteViewController {
         }
     }
 
+    @FXML
     private void limpiarCampos() {
         txtNombre.clear();
         txtDocumento.clear();

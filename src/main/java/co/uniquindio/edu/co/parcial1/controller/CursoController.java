@@ -1,11 +1,5 @@
 package co.uniquindio.edu.co.parcial1.controller;
-import co.uniquindio.edu.co.parcial1.model.Academia;
-import co.uniquindio.edu.co.parcial1.model.Curso;
-import co.uniquindio.edu.co.parcial1.model.CursoIntensivo;
-import co.uniquindio.edu.co.parcial1.model.CursoPersonalizado;
-import co.uniquindio.edu.co.parcial1.model.CursoRegular;
-import co.uniquindio.edu.co.parcial1.model.EstadoCurso;
-import co.uniquindio.edu.co.parcial1.model.NivelReferencia;
+import co.uniquindio.edu.co.parcial1.model.*;
 
 import java.util.List;
 
@@ -42,23 +36,30 @@ public class CursoController {
                     "El descuento debe estar entre 0 y 100.");
         }
 
+        if (buscarCurso(codigo) != null) {
+            throw new IllegalArgumentException("Ya existe un curso con el código: " + codigo);
+        }
+
         Curso curso;
 
         switch (tipo) {
             case "Regular":
-                curso = new CursoRegular(
+                CursoRegularFactory regularFactory = new CursoRegularFactory();
+                CursoRegular regular = (CursoRegular) regularFactory.crearCurso(
                         codigo, nombre, idioma, descripcion,
-                        duracion, valorMensual, estado,descuento,
-                        accesoPlataforma, materialDidactico);
-                curso.setDescuento(descuento);
+                        duracion, valorMensual, estado, descuento);
+                regular.setAccesoPlataforma(accesoPlataforma);
+                regular.setMaterialDidactico(materialDidactico);
+                curso = regular;
                 break;
 
             case "Intensivo":
-                curso = new CursoIntensivo(
+                CursoIntensivoFactory intensivoFactory = new CursoIntensivoFactory();
+                CursoIntensivo intensivo = (CursoIntensivo) intensivoFactory.crearCurso(
                         codigo, nombre, idioma, descripcion,
-                        duracion, valorMensual, estado,
-                        clubConversacion, descuento);
-                curso.setDescuento(descuento);
+                        duracion, valorMensual, estado, descuento);
+                intensivo.setClubConversacion(clubConversacion);
+                curso = intensivo;
                 break;
 
             case "Personalizado":
@@ -95,5 +96,15 @@ public class CursoController {
 
     public List<Curso> obtenerCursos() {
         return academia.getCursos();
+    }
+
+    public Curso buscarCurso(String codigo) {
+        if (codigo == null) return null;
+        for (Curso c : academia.getCursos()) {
+            if (c.getCodigo() != null && c.getCodigo().equalsIgnoreCase(codigo.trim())) {
+                return c;
+            }
+        }
+        return null;
     }
 }

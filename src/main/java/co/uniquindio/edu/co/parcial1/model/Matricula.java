@@ -11,6 +11,7 @@ public class Matricula {
     private final Profesor profesor;
     private final List<ServicioAdicional> servicios;
 
+    private final double descuento;
     private double valorFinal;
 
     private Matricula(Builder builder) {
@@ -19,6 +20,7 @@ public class Matricula {
         this.fecha = builder.fecha;
         this.profesor = builder.profesor;
         this.servicios = builder.servicios;
+        this.descuento = builder.descuento;
 
         this.valorFinal = calcularTotal();
     }
@@ -31,6 +33,7 @@ public class Matricula {
     public LocalDate getFecha() { return fecha; }
     public Profesor getProfesor() { return profesor; }
     public List<ServicioAdicional> getServicios() { return servicios; }
+    public double getDescuento() { return descuento; }
 
     public static class Builder {
         private Estudiante estudiante;
@@ -55,7 +58,9 @@ public class Matricula {
         public Builder servicios(List<ServicioAdicional> servicios) {
             this.servicios = servicios; return this;
         }
-
+        public Builder descuento(double descuento) {
+            this.descuento = descuento; return this;
+        }
 
         public Matricula build() {
             return new Matricula(this);
@@ -63,9 +68,14 @@ public class Matricula {
     }
 
     public double calcularTotal() {
-        double total = curso.calcularValorMatricula();
-        for (ServicioAdicional s : servicios) {
-            total += s.getPrecio();
+        double total = curso != null ? curso.calcularValorMatricula() : 0.0;
+        if (servicios != null) {
+            for (ServicioAdicional s : servicios) {
+                total += s.getPrecio();
+            }
+        }
+        if (descuento > 0) {
+            total = total * (1.0 - (descuento / 100.0));
         }
         return total;
     }

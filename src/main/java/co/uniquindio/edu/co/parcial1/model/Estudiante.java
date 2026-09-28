@@ -85,14 +85,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Datos del estudiante" + '\n'+
-                "Nombre completo :" + nombreCompleto + '\n' +
-                "Numero identidad :" + numeroIdentidad +'\n'+
-                "Telefono :" + telefono +'\n'+
-                "Correo electronico :" + correoElectronico + '\n' +
-                "Edad :" + edad +'\n'+
-                "Fecha registro :" + fechaRegistro + '\n' +
-                "Matriculas :" + matriculas ;
+        return nombreCompleto + " (Doc: " + numeroIdentidad + ")";
     }
 
     public void agregarMatricula(Matricula matricula) {

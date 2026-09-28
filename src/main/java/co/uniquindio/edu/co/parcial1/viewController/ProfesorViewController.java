@@ -1,69 +1,98 @@
+package co.uniquindio.edu.co.parcial1.viewController;
 
-    package co.uniquindio.edu.co.parcial1.viewController;
-
+import co.uniquindio.edu.co.parcial1.controller.ProfesorController;
+import co.uniquindio.edu.co.parcial1.model.Profesor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-    public class ProfesorViewController {
+public class ProfesorViewController {
 
-        @FXML
-        private TextField nombreField;
+    @FXML private TextField txtNombre;
+    @FXML private TextField txtIdentificacion;
+    @FXML private TextField txtIdioma;
+    @FXML private TextField txtTelefono;
+    @FXML private TextField txtTarifaSesion;
 
-        @FXML
-        private TextField identificacionField;
+    private final ProfesorController profesorController = new ProfesorController();
 
-        @FXML
-        private TextField idiomaField;
+    @FXML
+    private void registrarProfesor() {
+        try {
+            String nombre = txtNombre.getText().trim();
+            String identificacion = txtIdentificacion.getText().trim();
+            String idioma = txtIdioma.getText().trim();
+            String telefono = txtTelefono.getText().trim();
+            String tarifaStr = txtTarifaSesion.getText().trim();
 
-        @FXML
-        private TextField telefonoField;
-
-        @FXML
-        private TextField tarifaField;
-
-        @FXML
-        private void siguiente() {
-            String nombre = nombreField.getText().trim();
-            String identificacion = identificacionField.getText().trim();
-            String idioma = idiomaField.getText().trim();
-            String telefono = telefonoField.getText().trim();
-            String tarifaTexto = tarifaField.getText().trim();
-
-            if (nombre.isEmpty() || identificacion.isEmpty()
-                    || idioma.isEmpty() || telefono.isEmpty() || tarifaTexto.isEmpty()) {
-                mostrarAlerta("Faltan datos", "Completa todos los campos.");
+            if (nombre.isEmpty() || identificacion.isEmpty() || idioma.isEmpty() || tarifaStr.isEmpty()) {
+                mostrarError("Nombre, identificación, idioma y tarifa son obligatorios.");
                 return;
             }
 
-            double tarifa;
-            try {
-                tarifa = Double.parseDouble(tarifaTexto);
-                if (tarifa < 0) {
-                    mostrarAlerta("Tarifa inválida", "La tarifa no puede ser negativa.");
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                mostrarAlerta("Tarifa inválida", "Ingresa la tarifa como número, por ejemplo: 50000.");
-                return;
-            }
+            double tarifa = Double.parseDouble(tarifaStr);
 
-            mostrarAlerta(
-                    "Profesor registrado",
-                    "Nombre: " + nombre
-                            + "\nIdentificación: " + identificacion
-                            + "\nIdioma: " + idioma
-                            + "\nTeléfono: " + telefono
-                            + "\nTarifa por sesión: " + tarifa
-            );
-        }
+            profesorController.registrarProfesor(nombre, identificacion, idioma, telefono, tarifa);
 
-        private void mostrarAlerta(String titulo, String mensaje) {
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle(titulo);
-            alerta.setHeaderText(null);
-            alerta.setContentText(mensaje);
-            alerta.showAndWait();
+            mostrarMensaje("Profesor Registrado", "El profesor " + nombre + " ha sido registrado exitosamente.");
+            limpiarCampos();
+
+        } catch (NumberFormatException e) {
+            mostrarError("La tarifa por sesión debe ser un valor numérico válido (ej. 45000).");
+        } catch (IllegalArgumentException e) {
+            mostrarError(e.getMessage());
         }
     }
 
+    @FXML
+    private void buscarProfesor() {
+        try {
+            String identificacion = txtIdentificacion.getText().trim();
+            if (identificacion.isEmpty()) {
+                mostrarError("Ingresa la identificación del profesor que deseas buscar.");
+                return;
+            }
+
+            Profesor profesor = profesorController.buscarProfesor(identificacion);
+            if (profesor == null) {
+                mostrarError("No se encontró ningún profesor registrado con la identificación: " + identificacion);
+                return;
+            }
+
+            txtNombre.setText(profesor.getNombre());
+            txtIdioma.setText(profesor.getIdioma());
+            txtTelefono.setText(profesor.getTelefono());
+            txtTarifaSesion.setText(String.valueOf(profesor.getTarifaSesion()));
+
+            mostrarMensaje("Profesor Encontrado", "Datos cargados correctamente para: " + profesor.getNombre());
+
+        } catch (Exception e) {
+            mostrarError(e.getMessage());
+        }
+    }
+
+    @FXML
+    private void limpiarCampos() {
+        txtNombre.clear();
+        txtIdentificacion.clear();
+        txtIdioma.clear();
+        txtTelefono.clear();
+        txtTarifaSesion.clear();
+    }
+
+    private void mostrarMensaje(String titulo, String texto) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(texto);
+        alerta.showAndWait();
+    }
+
+    private void mostrarError(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+}

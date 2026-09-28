@@ -20,19 +20,44 @@ public class CursoPersonalizado extends Curso{
     }
     @Override
     public double calcularValorMatricula() {
-        double costoSesiones=sesionesConProfesor*profesor.getTarifaSesion();
-        if(descuento<0||descuento>100){
+        double tarifa = (profesor != null) ? profesor.getTarifaSesion() : 0.0;
+        double costoSesiones = sesionesConProfesor * tarifa;
+        if(descuento < 0 || descuento > 100){
             throw new IllegalArgumentException("El descuento debe estar entre 0 y 100");
         }
-        double totalMensualServicios=0;
-        List<ServicioAdicional> servicioAdicionalList=getServicioAdicional();
-        if(servicioAdicionalList!=null){
-            for(ServicioAdicional servicioAdicional1:servicioAdicionalList){
-                totalMensualServicios+=servicioAdicional1.getPrecio();
+        double totalMensualServicios = 0;
+        List<ServicioAdicional> servicioAdicionalList = getServicioAdicional();
+        if(servicioAdicionalList != null){
+            for(ServicioAdicional servicioAdicional1 : servicioAdicionalList){
+                totalMensualServicios += servicioAdicional1.getPrecio();
             }
         }
-        double total= (valorMensual+totalMensualServicios*duracionEnMeses+costoSesiones);
-        return total*(1-descuento/100.0);
+        double total = (valorMensual + totalMensualServicios) * duracionEnMeses + costoSesiones;
+        return total * (1.0 - descuento / 100.0);
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public int getSesionesConProfesor() {
+        return sesionesConProfesor;
+    }
+
+    public NivelReferencia getNivelReferencia() {
+        return nivelReferencia;
+    }
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public boolean isAccesoPlataforma() {
+        return accesoPlataforma;
     }
 
 

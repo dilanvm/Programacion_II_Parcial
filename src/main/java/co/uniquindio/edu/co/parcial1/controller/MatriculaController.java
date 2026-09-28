@@ -47,12 +47,22 @@ import java.util.List;
                 );
             }
 
+            if (curso instanceof CursoPersonalizado cp) {
+                if (profesor == null) {
+                    throw new IllegalArgumentException(
+                            "Debe seleccionar un profesor responsable para un curso personalizado."
+                    );
+                }
+                cp.setProfesor(profesor);
+            }
+
             Matricula matricula = new Matricula.Builder()
                     .estudiante(estudiante)
                     .curso(curso)
                     .fecha(fecha)
                     .profesor(profesor)
-                    .servicios(servicios)
+                    .servicios(servicios != null ? new java.util.ArrayList<>(servicios) : new java.util.ArrayList<>())
+                    .descuento(descuento)
                     .build();
 
             academia.agregarMatricula(matricula);

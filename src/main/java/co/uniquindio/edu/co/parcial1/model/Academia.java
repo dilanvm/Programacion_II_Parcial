@@ -19,6 +19,13 @@ public class Academia {
     private List<Matricula> matriculas;
 
     private Academia() {
+        this.nombreComercial = "LenguajeCafetero";
+        this.nit = "900.876.543-1";
+        this.direccion = "Carrera 15 # 12N-34, Armenia, Quindío";
+        this.telefono = "(606) 745-1234";
+        this.correo = "contacto@lenguajecafetero.edu.co";
+        this.paginaWeb = "www.lenguajecafetero.edu.co";
+
         estudiantes = new ArrayList<>();
         profesores = new ArrayList<>();
         cursos = new ArrayList<>();
@@ -151,7 +158,16 @@ public class Academia {
             }
         }
         return null;
+    }
 
+    public Profesor buscarProfesor(String identificacion){
+        if (identificacion == null) return null;
+        for(Profesor profesor:profesores){
+            if(profesor.getIdentifiacion() != null && profesor.getIdentifiacion().equalsIgnoreCase(identificacion.trim())){
+                return profesor;
+            }
+        }
+        return null;
     }
 
     public double calcularIngresos(LocalDate fechaInicio, LocalDate fechaFin) {

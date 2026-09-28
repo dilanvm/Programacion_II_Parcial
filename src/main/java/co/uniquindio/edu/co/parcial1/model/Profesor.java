@@ -31,6 +31,14 @@ public class Profesor {
         this.identificacion = identifiacion;
     }
 
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
     public String getIdioma() {
         return idioma;
     }
@@ -57,11 +65,6 @@ public class Profesor {
 
     @Override
     public String toString() {
-        return "Datos del profesor :" +
-                "Nombre :" + nombre + '\'' +
-                "Identifiacion :" + identificacion +
-                "Idioma :" + idioma + '\'' +
-                "Telefono :" + telefono +
-                "Tarifa sesion :" + tarifaSesion;
+        return nombre + " - " + idioma + " (Tarifa: $" + String.format("%.0f", tarifaSesion) + ")";
     }
 }

@@ -59,10 +59,6 @@ public class ServicioAdicional {
 
     @Override
     public String toString() {
-        return "Datos del servicio adicional :" +
-                "Codigo :" + codigo + '\'' +
-                "Nombre servicio :" + nombreServicio + '\'' +
-                "Precio :" + precio +
-                "Disponibilidad :" + disponibilidad ;
+        return nombreServicio + " ($" + String.format("%.0f", precio) + ")";
     }
 }

@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.parcial1.viewController.EstudianteViewController">
    <children>
-      <Button layoutX="233.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="142.0" text="SIGUIENTE" />
+      <Button layoutX="83.0" layoutY="331.0" onAction="#limpiarCampos" prefHeight="23.0" prefWidth="130.0" text="LIMPIAR" />
       <Label layoutX="238.0" layoutY="33.0" prefHeight="26.0" prefWidth="142.0" text="Registrar estudiante">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
